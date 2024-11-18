@@ -7,8 +7,11 @@ import { SITE } from "@/lib/constants"
 import { GraduationCap, BookOpen, Award, HeartPulse, Users, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import { motion } from "framer-motion"
+import { useModal } from '@/contexts/modal-context'
 
 export default function About() {
+  const { openContactModal } = useModal()
+  
   return (
     <div className="flex-1">
       <section className="container py-12 md:py-24">
@@ -38,9 +41,13 @@ export default function About() {
                 Known warmly as Dr. Rob to his patients, he has been serving the Amherstburg community 
                 since 1997 with a patient-first approach to chiropractic care and orthotic solutions.
               </p>
-              <Button size="lg" className="group">
-                Book a Consultation
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <Button 
+                size="lg" 
+                className="group"
+                onClick={openContactModal}
+              >
+                Book Consultation
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </motion.div>
             

@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { FileQuestion, Calendar, Settings, ArrowRight, Footprints, Clock, ArrowRightCircle } from 'lucide-react'
+import { useModal } from '@/contexts/modal-context'
 
 const faqCategories = [
   {
@@ -93,6 +94,8 @@ const faqCategories = [
 ] as const
 
 export default function FAQPage() {
+  const { openContactModal } = useModal()
+  
   return (
     <div className="flex-1">
       <section className="container py-12 md:py-24">
@@ -148,7 +151,10 @@ export default function FAQPage() {
             transition={{ delay: 0.5 }}
             className="text-center"
           >
-            <div className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer">
+            <div 
+              className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
+              onClick={openContactModal}
+            >
               <div className="flex items-center gap-4">
                 <div className="p-4 bg-primary rounded-xl">
                   <Calendar className="h-8 w-8 text-white" />

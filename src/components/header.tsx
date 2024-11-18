@@ -3,10 +3,11 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Phone, MapPin, Menu, X, Footprints, Activity, ChevronDown, Home, Info, HelpCircle, Box, Calendar, ShoppingBag, BedDouble } from 'lucide-react'
+import { ShoppingBag, BedDouble, Footprints, Activity, Home, Info, HelpCircle, Box, ChevronDown, Phone, MapPin, Menu, X, Calendar } from 'lucide-react'
 import { SITE, MOTION } from '@/lib/constants'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useModal } from '@/contexts/modal-context'
 
 const navigation = [
   { name: 'Home', href: '/', icon: Home },
@@ -48,6 +49,7 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const { openContactModal } = useModal()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -68,40 +70,42 @@ export function Header() {
     <header className={`fixed inset-x-0 top-0 z-50 bg-background/95 backdrop-blur-md transition-all duration-200 ${scrolled ? 'shadow-md' : ''}`}>
       {/* Top Contact Bar */}
       <div className="hidden md:block bg-primary/5 text-foreground border-b border-primary/10">
-        <div className="container py-2">
+        <div className="container py-1">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <span className="flex items-center text-sm">
-                <MapPin className="mr-2 h-4 w-4 text-primary" />
+            <div className="flex items-center gap-4">
+              <span className="text-sm">
                 286 Sandwich St S, Amherstburg
               </span>
-              <a href="tel:5197365353" className="flex items-center text-sm hover:text-primary transition-colors">
-                <Phone className="mr-2 h-4 w-4 text-primary" />
+              <a href="tel:5197365353" className="text-sm hover:text-primary transition-colors">
                 (519) 736-5353
               </a>
             </div>
-            <Button variant="default" size="sm" className="btn-hover">
-              Book Evaluation
-            </Button>
           </div>
         </div>
       </div>
 
       {/* Main Navigation */}
-      <div className="container py-4">
+      <div className="container py-2">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.png" alt={SITE.name} width={40} height={40} className="w-10 h-10" />
-            <span className="font-semibold text-xl">{SITE.name}</span>
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <div className="w-12 h-12 relative">
+              <Image 
+                src="/logo.png" 
+                alt={SITE.name} 
+                width={48} height={48}
+                className="w-12 h-12 origin-center"
+              />
+            </div>
+            <span className="font-semibold text-lg hidden sm:block">{SITE.name}</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors"
+                className="text-sm text-foreground/80 hover:text-primary transition-colors"
               >
                 {item.name}
               </Link>
@@ -109,13 +113,14 @@ export function Header() {
             
             {/* Products Dropdown */}
             <div 
-              className="relative group"
+              className="relative"
               onMouseEnter={() => setActiveDropdown('products')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <button className="flex items-center gap-1 text-foreground/80 hover:text-primary transition-colors">
+              <button className="flex items-center gap-1.5 text-sm text-foreground/80 hover:text-primary transition-colors">
+              
                 Products
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown className="h-3.5 w-3.5" />
               </button>
               <AnimatePresence>
                 {activeDropdown === 'products' && (
@@ -123,17 +128,22 @@ export function Header() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 w-64 pt-2"
+                    className="absolute top-full right-0 w-64 pt-2"
                   >
-                    <div className="bg-white rounded-lg shadow-lg border p-4 space-y-2">
+                    <div className="bg-white rounded-lg shadow-lg border p-3 space-y-1">
                       {products.map((product) => (
                         <Link
                           key={product.title}
                           href={product.href}
-                          className="block p-2 hover:bg-primary/5 rounded-md transition-colors"
+                          className="flex items-center gap-3 p-2 hover:bg-primary/5 rounded-md transition-colors"
                         >
-                          <div className="font-medium">{product.title}</div>
-                          <div className="text-sm text-muted-foreground">{product.description}</div>
+                          <div className="p-2 bg-primary/10 rounded-md">
+                            <product.Icon className="h-4 w-4 text-primary" />
+                          </div>
+                          <div>
+                            <div className="font-medium text-sm">{product.title}</div>
+                            <div className="text-xs text-muted-foreground">{product.description}</div>
+                          </div>
                         </Link>
                       ))}
                     </div>
@@ -144,13 +154,14 @@ export function Header() {
 
             {/* Conditions Dropdown */}
             <div 
-              className="relative group"
+              className="relative"
               onMouseEnter={() => setActiveDropdown('conditions')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <button className="flex items-center gap-1 text-foreground/80 hover:text-primary transition-colors">
+              <button className="flex items-center gap-1.5 text-sm text-foreground/80 hover:text-primary transition-colors">
+                
                 Conditions
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown className="h-3.5 w-3.5" />
               </button>
               <AnimatePresence>
                 {activeDropdown === 'conditions' && (
@@ -158,21 +169,21 @@ export function Header() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 w-64 pt-2"
+                    className="absolute top-full right-0 w-64 pt-2"
                   >
-                    <div className="bg-white rounded-lg shadow-lg border p-4 space-y-2">
+                    <div className="bg-white rounded-lg shadow-lg border p-3 space-y-1">
                       {conditionsMenu.map((item) => (
                         <Link
                           key={item.title}
                           href={item.href}
-                          className="block p-2 hover:bg-primary/5 rounded-md transition-colors"
+                          className="flex items-center gap-3 p-2 hover:bg-primary/5 rounded-md transition-colors"
                         >
-                          <div className="flex items-center gap-2">
-                            <item.Icon className="h-5 w-5 text-primary" />
-                            <div>
-                              <div className="font-medium">{item.title}</div>
-                              <div className="text-sm text-muted-foreground">{item.description}</div>
-                            </div>
+                          <div className="p-2 bg-primary/10 rounded-md">
+                            <item.Icon className="h-4 w-4 text-primary" />
+                          </div>
+                          <div>
+                            <div className="font-medium text-sm">{item.title}</div>
+                            <div className="text-xs text-muted-foreground">{item.description}</div>
                           </div>
                         </Link>
                       ))}
@@ -181,6 +192,16 @@ export function Header() {
                 )}
               </AnimatePresence>
             </div>
+
+            {/* Book Button */}
+            <Button 
+              variant="default"
+              size="sm"
+              onClick={openContactModal}
+              className="shadow-sm hover:shadow-md transition-all"
+            >
+              Book Evaluation
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -189,9 +210,9 @@ export function Header() {
             className="md:hidden p-2 hover:bg-primary/5 rounded-lg transition-colors"
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" />
             )}
           </button>
         </nav>
@@ -204,9 +225,9 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t"
+            className="md:hidden bg-white border-t overflow-hidden"
           >
-            <div className="container py-4 space-y-6">
+            <div className="container py-4 space-y-4">
               {/* Main Navigation */}
               <div className="space-y-2">
                 {navigation.map((item) => (
@@ -285,7 +306,10 @@ export function Header() {
                 </div>
                 <Button 
                   className="w-full btn-hover flex items-center justify-center gap-2" 
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false)
+                    openContactModal()
+                  }}
                 >
                   <Calendar className="h-5 w-5" />
                   Book Evaluation

@@ -8,6 +8,7 @@ import { ArrowRight, Activity, Footprints, LineChart, Star, Scan, MapPin, Phone,
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { MOTION } from "@/lib/constants"
+import { useModal } from '@/contexts/modal-context'
 
 const processSteps = [
   {
@@ -69,6 +70,7 @@ const stepAlts = {
 } as const
 
 export default function Home() {
+  const { openContactModal } = useModal()
   const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
@@ -100,9 +102,13 @@ export default function Home() {
                 Same-day service available in Amherstburg.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="btn-hover">
+                <Button 
+                  size="lg" 
+                  className="btn-hover"
+                  onClick={openContactModal}
+                >
                   Book Consultation
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button size="lg" variant="outline" className="btn-hover">
                   Learn More
@@ -360,7 +366,10 @@ export default function Home() {
       </section>
 
       <div className="container py-24">
-        <div className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer">
+        <div 
+          className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
+          onClick={openContactModal}
+        >
           <div className="flex items-center gap-4">
             <div className="p-4 bg-primary rounded-xl">
               <Calendar className="h-8 w-8 text-white" />

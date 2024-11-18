@@ -5,12 +5,14 @@ import { Button } from "@/components/ui/button"
 import { Play, Pause, Volume2, VolumeX, Zap, Moon, Bed, Thermometer, Waves, Brain, Heart, Activity, Calendar, ArrowRightCircle } from 'lucide-react'
 import { Breadcrumb } from "@/components/ui/breadcrumb"
 import { useState, useRef } from 'react'
+import { useModal } from '@/contexts/modal-context'
 
 export default function ChiroflowPage() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [progress, setProgress] = useState(0)
+  const { openContactModal } = useModal()
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -202,7 +204,10 @@ export default function ChiroflowPage() {
           </Card>
 
           {/* New CTA Section */}
-          <div className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer">
+          <div 
+            className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
+            onClick={openContactModal}
+          >
             <div className="flex items-center gap-4">
               <div className="p-4 bg-primary rounded-xl">
                 <Calendar className="h-8 w-8 text-white" />

@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/ui/breadcrumb"
 import { motion } from "framer-motion"
 import { Bone, Activity, Footprints, Heart, Brain, ShieldAlert, ArrowRight, Calendar, ArrowRightCircle } from 'lucide-react'
 import Image from 'next/image'
+import { useModal } from '@/contexts/modal-context'
 
 const conditions = [
   {
@@ -83,6 +84,8 @@ const conditions = [
 ] as const
 
 export default function ConditionsPage() {
+  const { openContactModal } = useModal()
+  
   return (
     <div className="flex-1">
       <section className="container py-12 md:py-24">
@@ -167,7 +170,10 @@ export default function ConditionsPage() {
             ))}
           </div>
 
-          <div className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer">
+          <div 
+            className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
+            onClick={openContactModal}
+          >
             <div className="flex items-center gap-4">
               <div className="p-4 bg-primary rounded-xl">
                 <Calendar className="h-8 w-8 text-white" />
