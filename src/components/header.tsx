@@ -223,97 +223,99 @@ export function Header() {
         {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: 'calc(100vh - 64px)' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t overflow-hidden"
+            className="md:hidden bg-white border-t overflow-hidden fixed inset-x-0 top-[64px]"
           >
-            <div className="container py-4 space-y-4">
-              {/* Main Navigation */}
-              <div className="space-y-2">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <div className="p-2 bg-primary/10 rounded-md">
-                      <item.icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <span>{item.name}</span>
-                  </Link>
-                ))}
-              </div>
-              
-              {/* Mobile Products */}
-              <div className="space-y-2">
-                <div className="font-medium text-sm text-muted-foreground px-3">Products</div>
-                {products.map((product) => (
-                  <Link
-                    key={product.title}
-                    href={product.href}
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <div className="p-2 bg-primary/10 rounded-md">
-                      <product.Icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <div className="font-medium">{product.title}</div>
-                      <div className="text-sm text-muted-foreground">{product.description}</div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Mobile Conditions */}
-              <div className="space-y-2">
-                <div className="font-medium text-sm text-muted-foreground px-3">Conditions</div>
-                {conditionsMenu.map((item) => (
-                  <Link
-                    key={item.title}
-                    href={item.href}
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <div className="p-2 bg-primary/10 rounded-md">
-                      <item.Icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <div className="font-medium">{item.title}</div>
-                      <div className="text-sm text-muted-foreground">{item.description}</div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Mobile Contact Info */}
-              <div className="border-t pt-6 space-y-4">
-                <a 
-                  href="tel:5197365353" 
-                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
-                >
-                  <div className="p-2 bg-primary/10 rounded-md">
-                    <Phone className="h-5 w-5 text-primary" />
-                  </div>
-                  <span>(519) 736-5353</span>
-                </a>
-                <div className="flex items-center gap-3 p-3 rounded-lg">
-                  <div className="p-2 bg-primary/10 rounded-md">
-                    <MapPin className="h-5 w-5 text-primary" />
-                  </div>
-                  <span>286 Sandwich St S, Amherstburg</span>
+            <div className="h-full overflow-y-auto">
+              <div className="container py-4 space-y-4">
+                {/* Main Navigation */}
+                <div className="space-y-2">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <div className="p-2 bg-primary/10 rounded-md">
+                        <item.icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <span>{item.name}</span>
+                    </Link>
+                  ))}
                 </div>
-                <Button 
-                  className="w-full btn-hover flex items-center justify-center gap-2" 
-                  onClick={() => {
-                    setIsMenuOpen(false)
-                    openContactModal()
-                  }}
-                >
-                  <Calendar className="h-5 w-5" />
-                  Book Evaluation
-                </Button>
+                
+                {/* Mobile Products */}
+                <div className="space-y-2">
+                  <div className="font-medium text-sm text-muted-foreground px-3">Products</div>
+                  {products.map((product) => (
+                    <Link
+                      key={product.title}
+                      href={product.href}
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <div className="p-2 bg-primary/10 rounded-md">
+                        <product.Icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <div className="font-medium">{product.title}</div>
+                        <div className="text-sm text-muted-foreground">{product.description}</div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Mobile Conditions */}
+                <div className="space-y-2">
+                  <div className="font-medium text-sm text-muted-foreground px-3">Conditions</div>
+                  {conditionsMenu.map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <div className="p-2 bg-primary/10 rounded-md">
+                        <item.Icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <div className="font-medium">{item.title}</div>
+                        <div className="text-sm text-muted-foreground">{item.description}</div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Mobile Contact Info */}
+                <div className="border-t pt-6 space-y-4 pb-6">
+                  <a 
+                    href="tel:5197365353" 
+                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
+                  >
+                    <div className="p-2 bg-primary/10 rounded-md">
+                      <Phone className="h-5 w-5 text-primary" />
+                    </div>
+                    <span>(519) 736-5353</span>
+                  </a>
+                  <div className="flex items-center gap-3 p-3 rounded-lg">
+                    <div className="p-2 bg-primary/10 rounded-md">
+                      <MapPin className="h-5 w-5 text-primary" />
+                    </div>
+                    <span>286 Sandwich St S, Amherstburg</span>
+                  </div>
+                  <Button 
+                    className="w-full btn-hover flex items-center justify-center gap-2" 
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      openContactModal()
+                    }}
+                  >
+                    <Calendar className="h-5 w-5" />
+                    Book Evaluation
+                  </Button>
+                </div>
               </div>
             </div>
           </motion.div>
