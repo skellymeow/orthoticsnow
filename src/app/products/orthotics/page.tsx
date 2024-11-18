@@ -24,7 +24,8 @@ const orthotic_products = [
       shoes: "Slip-on or narrow cut dress shoes",
       control: ["2mm semi-flexible", "3mm semi-rigid", "3.5mm rigid"],
       patientType: "Patients who require mild to moderate biomechanical control in their narrow dress shoes. Designed primarily for women.",
-      cover: "3/4 Length – A 1mm grey naugahyde topcover, Sulcus or Full Length – A 1mm grey naugahyde topcover with a vinyl bottom cover."
+      cover: "3/4 Length – A 1mm grey naugahyde topcover, Sulcus or Full Length – A 1mm grey naugahyde topcover with a vinyl bottom cover.",
+      additionalFeatures: null
     }
   },
   {
@@ -35,7 +36,8 @@ const orthotic_products = [
       shoes: "High heeled shoes or dance shoes",
       control: ["2mm semi-flexible", "3mm semi-rigid", "3.5mm rigid"],
       patientType: "Patients who require mild to moderate biomechanical control in their high heel or dance shoes.",
-      cover: "Full Length – A 1mm black naugahyde topcover with a bottom vinyl sandwich."
+      cover: "Full Length – A 1mm black naugahyde topcover with a bottom vinyl sandwich.",
+      additionalFeatures: null
     }
   },
   {
@@ -46,7 +48,8 @@ const orthotic_products = [
       shoes: "A variety of shoes",
       control: ["2mm semi-flexible", "3mm semi-rigid", "3.5mm rigid"],
       patientType: "Those who require one pair of orthotics that can be worn in a variety of shoes. Offers patients moderate to maximum biomechanical control.",
-      cover: "3/4 Length – A black 1mm naugahyde topcover. Sulcus or Full Length – A black 2mm starsuede topcover."
+      cover: "3/4 Length – A black 1mm naugahyde topcover. Sulcus or Full Length – A black 2mm starsuede topcover.",
+      additionalFeatures: null
     }
   },
   {
@@ -58,7 +61,8 @@ const orthotic_products = [
       control: ["1mm flexible"],
       patientType: "Mild to moderate biomechanical control with superior shock absorption. For feet that can afford to sacrifice some correction for increased comfort and cushioning (i.e. geriatric patients, arthritic patients).",
       cover: "Sulcus or Full Length – A blue 3mm starsuede topcover.",
-      features: "Soft poron arch fill, rubber non-slip heel cap."
+      features: "Soft poron arch fill, rubber non-slip heel cap.",
+      additionalFeatures: null
     }
   },
   {
@@ -69,7 +73,8 @@ const orthotic_products = [
       shoes: "Athletic shoes",
       control: ["2mm semi-flexible", "3mm semi-rigid", "3.5mm rigid"],
       patientType: "Athletes and other active patients who require moderate to maximum biomechanical control. Designed to prevent sport related injuries by protecting against pressure and impact shock.",
-      cover: "Sulcus and Full Length — A blue 3mm ETC™ topcover."
+      cover: "Sulcus and Full Length — A blue 3mm ETC™ topcover.",
+      additionalFeatures: null
     }
   },
   {
@@ -81,7 +86,8 @@ const orthotic_products = [
       control: ["2mm semi-flexible", "3mm semi-rigid", "3.5mm rigid"],
       patientType: "Specially engineered for the high performance runner.",
       cover: "Full Length – A blue 3mm ETC™ topcover with a vinyl bottom cover.",
-      features: "Extrinsic rearfoot flexpost (Lunalite™ post with 3mm Lunasoft™ foam heel lift). Designed to take pressure off the Achilles Tendon, promote greater ankle dorsiflexion and to increase shock absorption."
+      features: "Extrinsic rearfoot flexpost (Lunalite™ post with 3mm Lunasoft™ foam heel lift). Designed to take pressure off the Achilles Tendon, promote greater ankle dorsiflexion and to increase shock absorption.",
+      additionalFeatures: "Extrinsic rearfoot flexpost (Lunalite™ post with 3mm Lunasoft™ foam heel lift). Designed to take pressure off the Achilles Tendon, promote greater ankle dorsiflexion and to increase shock absorption."
     }
   },
   {
@@ -92,7 +98,8 @@ const orthotic_products = [
       shoes: "Golf shoes",
       control: ["2mm semi-flexible", "3mm semi-rigid", "3.5mm rigid"],
       patientType: "Golfers who require comfort and support while walking the golf course.",
-      cover: "Sulcus and Full Length – A green 3mm ETC™ topcover."
+      cover: "Sulcus and Full Length – A green 3mm ETC™ topcover.",
+      additionalFeatures: null
     }
   }
 ] as const
@@ -167,13 +174,13 @@ export default function OrthoticsPage() {
                             ))}
                           </div>
                         </div>
-                        {product.details.features && (
+                        {product.details.additionalFeatures && (
                           <div className="bg-muted/30 rounded-xl p-4 space-y-3 sm:col-span-2">
                             <div className="flex items-center gap-2 mb-1">
                               <Star className="h-4 w-4 text-primary" />
                               <h4 className="font-medium text-primary">Special Features</h4>
                             </div>
-                            <p className="text-muted-foreground text-sm leading-relaxed">{product.details.features}</p>
+                            <p className="text-muted-foreground text-sm leading-relaxed">{product.details.additionalFeatures}</p>
                           </div>
                         )}
                       </div>

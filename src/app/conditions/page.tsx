@@ -14,7 +14,7 @@ const conditions = [
     symptoms: ["Heel pain", "Arch pain", "Morning stiffness", "Pain after activity"],
     icon: Bone,
     image: "/images/conditions/plantar-fasciitis.png",
-    alt: "Plantar Fasciitis foot condition diagram showing inflammation of the plantar fascia",
+    imageAlt: "Plantar Fasciitis foot condition diagram showing inflammation of the plantar fascia",
     treatment: "Custom orthotics provide targeted support to the plantar fascia, helping to distribute pressure and reduce inflammation."
   },
   {
@@ -23,6 +23,7 @@ const conditions = [
     symptoms: ["Ball of foot pain", "Sharp or burning pain", "Numbness", "Increased pain when walking"],
     icon: Brain,
     image: "/images/conditions/metatarsalgia.png",
+    imageAlt: "Metatarsalgia foot condition diagram showing pain in the ball of the foot",
     treatment: "Our orthotics provide targeted metatarsal support and cushioning."
   },
   {
@@ -31,6 +32,7 @@ const conditions = [
     symptoms: ["Heel pain", "Stiffness", "Limited mobility", "Pain during walking"],
     icon: Activity,
     image: "/images/conditions/achilles-tendonitis.png",
+    imageAlt: "Achilles Tendonitis foot condition diagram showing inflammation of the Achilles tendon",
     treatment: "Custom orthotics help correct gait mechanics and provide proper heel support to reduce tendon strain."
   },
   {
@@ -39,6 +41,7 @@ const conditions = [
     symptoms: ["Knee pain", "Hip pain", "Pain while running", "Outer knee inflammation"],
     icon: Activity,
     image: "/images/conditions/itband.png",
+    imageAlt: "Iliotibial Band Syndrome foot condition diagram showing inflammation of the outer knee",
     treatment: "Our orthotics address biomechanical imbalances that contribute to IT band stress."
   },
   {
@@ -47,6 +50,7 @@ const conditions = [
     symptoms: ["Ball of foot pain", "Numbness", "Tingling sensation", "'Pins and needles' feeling"],
     icon: Brain,
     image: "/images/conditions/mortons-neuroma.png",
+    imageAlt: "Morton's Neuroma foot condition diagram showing thickening of tissue around the nerves between the toes",
     treatment: "Custom orthotics provide metatarsal support and help reduce nerve compression."
   },
   {
@@ -55,6 +59,7 @@ const conditions = [
     symptoms: ["Front knee pain", "Pain when climbing stairs", "Grinding sensation", "Swelling"],
     icon: Activity,
     image: "/images/conditions/runners-knee.png",
+    imageAlt: "Runner's Knee foot condition diagram showing pain around the kneecap",
     treatment: "Specialized orthotics with rear foot posting help correct running mechanics."
   },
   {
@@ -63,6 +68,7 @@ const conditions = [
     symptoms: ["Lower back pain", "Buttock pain", "Thigh pain", "Pain while sitting"],
     icon: Activity,
     image: "/images/conditions/sacroiliac.png",
+    imageAlt: "Sacroiliac Syndrome foot condition diagram showing painful inflammation of the sacroiliac joints",
     treatment: "Custom orthotics help stabilize the pelvis and improve overall body alignment."
   },
   {
@@ -71,6 +77,7 @@ const conditions = [
     symptoms: ["Shin pain", "Muscle soreness", "Tenderness", "Pain during exercise"],
     icon: Bone,
     image: "/images/conditions/shin-splints.png",
+    imageAlt: "Shin Splints foot condition diagram showing painful inflammation along the shin bone",
     treatment: "Our orthotics provide proper arch support and shock absorption to reduce shin stress."
   }
 ] as const
@@ -118,7 +125,7 @@ export default function ConditionsPage() {
                   <div className="relative h-48 w-full">
                     <Image
                       src={condition.image}
-                      alt={condition.alt}
+                      alt={condition.imageAlt}
                       fill
                       className="object-contain p-6"
                       priority
