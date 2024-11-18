@@ -27,6 +27,11 @@
     --ring: 215 100% 34%;
     
     --radius: 0.5rem;
+    
+    /* adding scrollbar custom properties */
+    --scrollbar-size: 8px;
+    --scrollbar-thumb: 215 20% 65%; /* slightly muted primary */
+    --scrollbar-track: 215 10% 90%; /* very light primary */
   }
   
   html, body {
@@ -69,6 +74,47 @@
   /* button animations */
   .btn-hover {
     @apply transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  /* custom scrollbar styling */
+  ::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--scrollbar-track));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--scrollbar-thumb));
+    border-radius: var(--radius);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+
+  /* firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--scrollbar-thumb)) hsl(var(--scrollbar-track));
+  }
+
+  /* custom scrollbar for mobile menu */
+  .mobile-menu-scroll {
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: hsl(var(--scrollbar-thumb) / 0.8);
+      border-radius: var(--radius);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
   }
 }
 

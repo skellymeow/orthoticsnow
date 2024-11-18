@@ -227,93 +227,93 @@ export function Header() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white border-t overflow-hidden fixed inset-x-0 top-[64px]"
           >
-            <div className="h-full overflow-y-auto">
-              <div className="container py-4 space-y-4">
+            <div className="h-full overflow-y-auto mobile-menu-scroll">
+              <div className="container py-2 space-y-2">
                 {/* Main Navigation */}
-                <div className="space-y-2">
+                <div className="space-y-1">
                   {navigation.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
+                      className="flex items-center gap-2 p-2 rounded-lg hover:bg-primary/5 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <div className="p-2 bg-primary/10 rounded-md">
-                        <item.icon className="h-5 w-5 text-primary" />
+                      <div className="p-1.5 bg-primary/10 rounded-md">
+                        <item.icon className="h-4 w-4 text-primary" />
                       </div>
-                      <span>{item.name}</span>
+                      <span className="text-sm">{item.name}</span>
                     </Link>
                   ))}
                 </div>
                 
                 {/* Mobile Products */}
-                <div className="space-y-2">
-                  <div className="font-medium text-sm text-muted-foreground px-3">Products</div>
+                <div className="space-y-1">
+                  <div className="font-medium text-xs text-muted-foreground px-2 py-1">Products</div>
                   {products.map((product) => (
                     <Link
                       key={product.title}
                       href={product.href}
-                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
+                      className="flex items-center gap-2 p-2 rounded-lg hover:bg-primary/5 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <div className="p-2 bg-primary/10 rounded-md">
-                        <product.Icon className="h-5 w-5 text-primary" />
+                      <div className="p-1.5 bg-primary/10 rounded-md">
+                        <product.Icon className="h-4 w-4 text-primary" />
                       </div>
                       <div>
-                        <div className="font-medium">{product.title}</div>
-                        <div className="text-sm text-muted-foreground">{product.description}</div>
+                        <div className="font-medium text-sm">{product.title}</div>
+                        <div className="text-xs text-muted-foreground">{product.description}</div>
                       </div>
                     </Link>
                   ))}
                 </div>
 
                 {/* Mobile Conditions */}
-                <div className="space-y-2">
-                  <div className="font-medium text-sm text-muted-foreground px-3">Conditions</div>
+                <div className="space-y-1">
+                  <div className="font-medium text-xs text-muted-foreground px-2 py-1">Conditions</div>
                   {conditionsMenu.map((item) => (
                     <Link
                       key={item.title}
                       href={item.href}
-                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
+                      className="flex items-center gap-2 p-2 rounded-lg hover:bg-primary/5 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <div className="p-2 bg-primary/10 rounded-md">
-                        <item.Icon className="h-5 w-5 text-primary" />
+                      <div className="p-1.5 bg-primary/10 rounded-md">
+                        <item.Icon className="h-4 w-4 text-primary" />
                       </div>
                       <div>
-                        <div className="font-medium">{item.title}</div>
-                        <div className="text-sm text-muted-foreground">{item.description}</div>
+                        <div className="font-medium text-sm">{item.title}</div>
+                        <div className="text-xs text-muted-foreground">{item.description}</div>
                       </div>
                     </Link>
                   ))}
                 </div>
 
                 {/* Mobile Contact Info */}
-                <div className="border-t pt-6 space-y-4 pb-6">
+                <div className="border-t mt-2 pt-3 space-y-2 pb-4">
                   <a 
                     href="tel:5197365353" 
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 transition-colors"
+                    className="flex items-center gap-2 p-2 rounded-lg hover:bg-primary/5 transition-colors"
                   >
-                    <div className="p-2 bg-primary/10 rounded-md">
-                      <Phone className="h-5 w-5 text-primary" />
+                    <div className="p-1.5 bg-primary/10 rounded-md">
+                      <Phone className="h-4 w-4 text-primary" />
                     </div>
-                    <span>(519) 736-5353</span>
+                    <span className="text-sm">(519) 736-5353</span>
                   </a>
-                  <div className="flex items-center gap-3 p-3 rounded-lg">
-                    <div className="p-2 bg-primary/10 rounded-md">
-                      <MapPin className="h-5 w-5 text-primary" />
+                  <div className="flex items-center gap-2 p-2 rounded-lg">
+                    <div className="p-1.5 bg-primary/10 rounded-md">
+                      <MapPin className="h-4 w-4 text-primary" />
                     </div>
-                    <span>286 Sandwich St S, Amherstburg</span>
+                    <span className="text-sm">286 Sandwich St S, Amherstburg</span>
                   </div>
                   <Button 
-                    className="w-full btn-hover flex items-center justify-center gap-2" 
+                    className="w-full btn-hover flex items-center justify-center gap-2 mt-2" 
                     onClick={() => {
                       setIsMenuOpen(false)
                       openContactModal()
                     }}
                   >
-                    <Calendar className="h-5 w-5" />
-                    Book Evaluation
+                    <Calendar className="h-4 w-4" />
+                    <span className="text-sm">Book Evaluation</span>
                   </Button>
                 </div>
               </div>

@@ -88,10 +88,10 @@ export default function Home() {
         variants={MOTION.page}
         className="relative overflow-hidden bg-muted/30"
       >
-        <div className="container py-24 md:py-32">
+        <div className="container py-16 md:py-32">
           <motion.div 
             variants={MOTION.stagger.container}
-            className="grid gap-12 lg:grid-cols-2 items-center"
+            className="grid gap-8 lg:gap-12 lg:grid-cols-2 items-center"
           >
             <motion.div variants={MOTION.stagger.item} className="space-y-6">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
@@ -168,8 +168,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <section className="w-full py-24">
-        <div className="container">
+      <section className="w-full bg-white">
+        <div className="container py-16 md:py-24">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Why Choose Orthotics NOW?
@@ -222,32 +222,8 @@ export default function Home() {
         viewport={{ once: true }}
         className="w-full bg-muted/30"
       >
-        <div className="container py-24">
-          <div className="grid gap-6 md:grid-cols-3 max-w-[1200px] mx-auto">
-            {[
-              {
-                title: "Expert Evaluation",
-                description: "Personal consultation with Dr. Rob including comprehensive foot assessment",
-                icon: Activity
-              },
-              {
-                title: "Digital Scan",
-                description: "Advanced 3D foot scanning technology with detailed biomechanical analysis",
-                icon: Scan
-              },
-              {
-                title: "Custom Orthotics",
-                description: "Precision-crafted orthotics delivered within 7 days, with full digital documentation",
-                icon: Footprints
-              }
-            ].map((service) => (
-              <Card key={service.title} className="p-6 space-y-2 card-hover">
-                <service.icon className="h-12 w-12 text-primary" />
-                <h3 className="font-semibold">{service.title}</h3>
-                <p className="text-sm text-muted-foreground">{service.description}</p>
-              </Card>
-            ))}
-          </div>
+        <div className="container py-16 md:py-24">
+          {/* Removing the redundant cards section */}
         </div>
       </motion.section>
 
@@ -304,7 +280,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="w-full bg-muted/30">
-        <div className="container py-24">
+        <div className="container py-16 md:py-24">
           <div className="grid lg:grid-cols-5 gap-8">
             <div className="lg:col-span-3 rounded-2xl overflow-hidden shadow-xl h-[500px]">
               <iframe
@@ -365,9 +341,9 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="container py-24">
+      <div className="container py-16 md:py-24">
         <div 
-          className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
+          className="bg-primary/5 rounded-2xl p-6 md:p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
           onClick={openContactModal}
         >
           <div className="flex items-center gap-4">
