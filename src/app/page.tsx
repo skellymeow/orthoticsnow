@@ -281,6 +281,15 @@ export default function Home() {
 
       <section id="contact" className="w-full bg-muted/30">
         <div className="container py-16 md:py-24">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              Visit Our Office
+            </h2>
+            <p className="text-muted-foreground md:text-lg max-w-[800px] mx-auto">
+              Conveniently located in downtown Amherstburg, we're here to serve you with expert orthotic care
+            </p>
+          </div>
+
           <div className="grid lg:grid-cols-5 gap-8">
             <div className="lg:col-span-3 rounded-2xl overflow-hidden shadow-xl h-[500px]">
               <iframe

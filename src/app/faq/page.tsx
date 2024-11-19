@@ -129,10 +129,10 @@ export default function FAQPage() {
                   <Accordion type="single" collapsible className="w-full">
                     {category.items.map((item, index) => (
                       <AccordionItem key={index} value={`item-${categoryIndex}-${index}`}>
-                        <AccordionTrigger className="text-left">
+                        <AccordionTrigger className="text-left text-base md:text-lg">
                           {item.question}
                         </AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
+                        <AccordionContent className="text-muted-foreground text-base">
                           {item.answer.split('\n').map((paragraph, i) => (
                             <p key={i} className="mb-4 last:mb-0">{paragraph}</p>
                           ))}

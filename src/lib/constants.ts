@@ -1,47 +1,69 @@
 export const COLORS = {
-  primary: '#0047AB',
-  secondary: '#2563eb',
-  accent: '#1e40af',
-  background: '#F8FAFC',
-  text: '#1e293b',
+  primary: {
+    DEFAULT: '#0047AB',
+    light: '#E6F0FF',
+    dark: '#003380',
+    muted: 'rgba(0, 71, 171, 0.1)',
+  },
+  secondary: {
+    DEFAULT: '#2563eb',
+    light: '#EEF2FF',
+    dark: '#1e40af',
+  },
+  neutral: {
+    50: '#F8FAFC',
+    100: '#F1F5F9',
+    200: '#E2E8F0',
+    300: '#CBD5E1',
+    400: '#94A3B8',
+    500: '#64748B',
+    600: '#475569',
+    700: '#334155',
+    800: '#1E293B',
+    900: '#0F172A',
+  },
+  success: '#16A34A',
+  warning: '#EAB308',
+  error: '#DC2626',
 } as const
 
 export const SITE = {
   name: 'Orthotics Now',
   description: 'Professional custom orthotics solutions',
+  contact: {
+    phone: '(519) 736-5353',
+    email: 'info@orthoticsnow.com',
+    address: '286 Sandwich St S, Amherstburg, ON N9V 2A7',
+  },
 } as const
 
 export const MOTION = {
-  // subtle fade up animation for content sections
   fadeIn: {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 10 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 }
+    transition: { duration: 0.4, ease: 'easeOut' }
   },
   
-  // stagger children animations
   stagger: {
     container: {
-      animate: { transition: { staggerChildren: 0.1 } }
+      animate: { transition: { staggerChildren: 0.08 } }
     },
     item: {
-      initial: { opacity: 0, y: 20 },
+      initial: { opacity: 0, y: 10 },
       animate: { opacity: 1, y: 0 },
-      transition: { duration: 0.5 }
+      transition: { duration: 0.4, ease: 'easeOut' }
     }
   },
   
-  // hover effects for interactive elements
   hover: {
     scale: 1.02,
-    transition: { duration: 0.2 }
+    transition: { duration: 0.2, ease: 'easeInOut' }
   },
 
-  // page transitions
   page: {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: 0.3 }
+    transition: { duration: 0.25, ease: 'easeInOut' }
   }
 } as const 

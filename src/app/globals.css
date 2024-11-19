@@ -4,107 +4,123 @@
 
 @layer base {
   :root {
-    --background: 0 0% 96%;
-    --foreground: 0 0% 20%;
+    /* modernized color system */
+    --background: 210 40% 98%;
+    --foreground: 215 25% 27%;
     
     --primary: 215 100% 34%;
-    --primary-foreground: 0 0% 98%;
+    --primary-foreground: 210 40% 98%;
     
     --secondary: 215 84% 53%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 215 25% 97%;
+    --muted-foreground: 215 25% 47%;
     
     --accent: 215 100% 40%;
-    --accent-foreground: 0 0% 98%;
-    
-    --muted: 215 10% 96%;
-    --muted-foreground: 0 0% 45%;
+    --accent-foreground: 210 40% 98%;
     
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 215 25% 27%;
     
-    --border: 215 10% 90%;
-    --input: 215 10% 90%;
+    --border: 215 25% 93%;
+    --input: 215 25% 93%;
     --ring: 215 100% 34%;
-    
+
+    /* refined system properties */
     --radius: 0.5rem;
+    --header-height: 4rem;
+    --max-width: 1200px;
     
-    /* adding scrollbar custom properties */
+    /* enhanced scrollbar styling */
     --scrollbar-size: 8px;
-    --scrollbar-thumb: 215 20% 65%; /* slightly muted primary */
-    --scrollbar-track: 215 10% 90%; /* very light primary */
+    --scrollbar-size-mobile: 4px;
+    --scrollbar-thumb: 215 20% 80%;
+    --scrollbar-track: 215 20% 95%;
   }
-  
-  html, body {
-    @apply max-w-full overflow-x-hidden;
+
+  /* improved dark mode support (if needed later) */
+  [data-theme="dark"] {
+    --background: 215 25% 12%;
+    --foreground: 210 40% 98%;
+    /* ... other dark mode variables ... */
+  }
+}
+
+@layer base {
+  /* refined base styles */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply bg-background text-foreground min-h-screen flex flex-col;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-background text-foreground min-h-screen flex flex-col antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1, "ss02" 1;
   }
 
+  /* enhanced container system */
   .container {
-    @apply px-4 mx-auto w-full max-w-[1200px];
+    @apply px-4 mx-auto w-full;
+    max-width: var(--max-width);
   }
 
-  section {
-    @apply w-full;
-  }
-
-  /* smooth scrolling and transitions */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* consistent transition speeds */
-  *, *::before, *::after {
-    @apply transition-all duration-200;
-  }
-
-  /* subtle hover states */
+  /* refined interactive states */
   .hover-lift {
-    @apply transition-transform duration-200 hover:-translate-y-0.5;
+    @apply transition-transform duration-200 ease-out hover:-translate-y-0.5;
   }
 
-  /* consistent card animations */
   .card-hover {
-    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+    @apply transition-all duration-200 ease-out hover:shadow-lg hover:-translate-y-1;
   }
 
-  /* button animations */
   .btn-hover {
-    @apply transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
+    @apply transition-all duration-200 ease-out hover:scale-[1.02] active:scale-[0.98];
   }
 
-  /* custom scrollbar styling */
-  ::-webkit-scrollbar {
-    width: var(--scrollbar-size);
-    height: var(--scrollbar-size);
+  /* modernized scrollbar styling */
+  @media (min-width: 768px) {
+    ::-webkit-scrollbar {
+      width: var(--scrollbar-size);
+      height: var(--scrollbar-size);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: hsl(var(--scrollbar-track));
+      border-radius: var(--radius);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: hsl(var(--scrollbar-thumb));
+      border-radius: var(--radius);
+      border: 2px solid hsl(var(--scrollbar-track));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: hsl(var(--primary));
+    }
   }
 
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--scrollbar-track));
+  @media (max-width: 767px) {
+    ::-webkit-scrollbar {
+      width: var(--scrollbar-size-mobile);
+      height: var(--scrollbar-size-mobile);
+    }
   }
 
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--scrollbar-thumb));
-    border-radius: var(--radius);
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary));
-  }
-
-  /* firefox */
+  /* firefox scrollbar */
   * {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--scrollbar-thumb)) hsl(var(--scrollbar-track));
   }
 
-  /* custom scrollbar for mobile menu */
+  /* mobile menu scrollbar refinements */
   .mobile-menu-scroll {
+    @apply overflow-y-auto;
+    
     &::-webkit-scrollbar {
-      width: 6px;
+      width: var(--scrollbar-size-mobile);
     }
 
     &::-webkit-scrollbar-thumb {
@@ -118,8 +134,13 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+/* utility classes for consistent spacing */
+@layer utilities {
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  .section-margin {
+    @apply my-16 md:my-24;
   }
 }
