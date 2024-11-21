@@ -64,7 +64,7 @@ export default function ChiroflowPage() {
               ref={videoRef}
               src="/products/video.mp4"
               className="w-full h-full object-cover"
-              poster="/images/chiroflow-poster.jpg"
+              poster="/products/chiroflow-poster.jpg"
               onTimeUpdate={handleTimeUpdate}
               onEnded={() => setIsPlaying(false)}
             />
