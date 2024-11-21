@@ -4,17 +4,12 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ModalProvider } from '@/contexts/modal-context'
+import { Inter as FontSans } from "next/font/google"
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export const metadata: Metadata = {
   title: "Orthotics NOW | Custom Foot Orthotics in Amherstburg, Ontario",
@@ -44,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-y-auto`}
+        className={`${fontSans.variable} antialiased overflow-y-auto`}
       >
         <ModalProvider>
           <div className="flex min-h-screen flex-col">

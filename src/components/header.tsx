@@ -67,155 +67,165 @@ export function Header() {
   }, [isMenuOpen])
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 bg-background/95 backdrop-blur-md transition-all duration-200 ${scrolled ? 'shadow-md' : ''}`}>
+    <header className="fixed inset-x-0 top-0 z-50">
       {/* Top Contact Bar */}
-      <div className="hidden md:block bg-primary/5 text-foreground border-b border-primary/10">
-        <div className="container py-1">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <span className="text-sm">
-                286 Sandwich St S, Amherstburg
-              </span>
-              <a href="tel:5197365353" className="text-sm hover:text-primary transition-colors">
-                (519) 736-5353
-              </a>
-            </div>
+      <div className="bg-primary text-white py-1.5 hidden md:block">
+        <div className="container flex justify-between items-center">
+          <div className="flex items-center gap-6">
+            <a 
+              href="https://www.google.com/maps/search/286+Sandwich+St+S,+Amherstburg" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-white/90 transition-colors text-sm"
+            >
+              <MapPin className="h-3.5 w-3.5" />
+              286 Sandwich St S, Amherstburg
+            </a>
+            <a 
+              href="tel:5197365353" 
+              className="flex items-center gap-2 hover:text-white/90 transition-colors text-sm"
+            >
+              <Phone className="h-3.5 w-3.5" />
+              (519) 736-5353
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Main Navigation */}
-      <div className="container py-2">
-        <nav className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div className="w-12 h-12 relative">
-              <Image 
-                src="/logo.png" 
-                alt={SITE.name} 
-                width={48} height={48}
-                className="w-12 h-12 origin-center"
-              />
-            </div>
-            <span className="font-semibold text-lg hidden sm:block">{SITE.name}</span>
-          </Link>
+      {/* Main Navigation - remove contact info from here */}
+      <div className={`bg-background/95 backdrop-blur-md transition-all duration-200 ${scrolled ? 'shadow-md' : ''}`}>
+        <div className="container py-2">
+          <nav className="flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-2 shrink-0">
+              <div className="w-12 h-12 relative">
+                <Image 
+                  src="/logo.png" 
+                  alt={SITE.name} 
+                  width={48} height={48}
+                  className="w-12 h-12 origin-center"
+                />
+              </div>
+              <span className="font-semibold text-lg hidden sm:block">{SITE.name}</span>
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm text-foreground/80 hover:text-primary transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
-            
-            {/* Products Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setActiveDropdown('products')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="flex items-center gap-1.5 text-sm text-foreground/80 hover:text-primary transition-colors">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-6">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm text-foreground/80 hover:text-primary transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
               
-                Products
-                <ChevronDown className="h-3.5 w-3.5" />
-              </button>
-              <AnimatePresence>
-                {activeDropdown === 'products' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full right-0 w-64 pt-2"
-                  >
-                    <div className="bg-white rounded-lg shadow-lg border p-3 space-y-1">
-                      {products.map((product) => (
-                        <Link
-                          key={product.title}
-                          href={product.href}
-                          className="flex items-center gap-3 p-2 hover:bg-primary/5 rounded-md transition-colors"
-                        >
-                          <div className="p-2 bg-primary/10 rounded-md">
-                            <product.Icon className="h-4 w-4 text-primary" />
-                          </div>
-                          <div>
-                            <div className="font-medium text-sm">{product.title}</div>
-                            <div className="text-xs text-muted-foreground">{product.description}</div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Conditions Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setActiveDropdown('conditions')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="flex items-center gap-1.5 text-sm text-foreground/80 hover:text-primary transition-colors">
+              {/* Products Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setActiveDropdown('products')}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <button className="flex items-center gap-1.5 text-sm text-foreground/80 hover:text-primary transition-colors">
                 
-                Conditions
-                <ChevronDown className="h-3.5 w-3.5" />
-              </button>
-              <AnimatePresence>
-                {activeDropdown === 'conditions' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full right-0 w-64 pt-2"
-                  >
-                    <div className="bg-white rounded-lg shadow-lg border p-3 space-y-1">
-                      {conditionsMenu.map((item) => (
-                        <Link
-                          key={item.title}
-                          href={item.href}
-                          className="flex items-center gap-3 p-2 hover:bg-primary/5 rounded-md transition-colors"
-                        >
-                          <div className="p-2 bg-primary/10 rounded-md">
-                            <item.Icon className="h-4 w-4 text-primary" />
-                          </div>
-                          <div>
-                            <div className="font-medium text-sm">{item.title}</div>
-                            <div className="text-xs text-muted-foreground">{item.description}</div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  Products
+                  <ChevronDown className="h-3.5 w-3.5" />
+                </button>
+                <AnimatePresence>
+                  {activeDropdown === 'products' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      className="absolute top-full right-0 w-64 pt-2"
+                    >
+                      <div className="bg-white rounded-lg shadow-lg border p-3 space-y-1">
+                        {products.map((product) => (
+                          <Link
+                            key={product.title}
+                            href={product.href}
+                            className="flex items-center gap-3 p-2 hover:bg-primary/5 rounded-md transition-colors"
+                          >
+                            <div className="p-2 bg-primary/10 rounded-md">
+                              <product.Icon className="h-4 w-4 text-primary" />
+                            </div>
+                            <div>
+                              <div className="font-medium text-sm">{product.title}</div>
+                              <div className="text-xs text-muted-foreground">{product.description}</div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Conditions Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setActiveDropdown('conditions')}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <button className="flex items-center gap-1.5 text-sm text-foreground/80 hover:text-primary transition-colors">
+                  
+                  Conditions
+                  <ChevronDown className="h-3.5 w-3.5" />
+                </button>
+                <AnimatePresence>
+                  {activeDropdown === 'conditions' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      className="absolute top-full right-0 w-64 pt-2"
+                    >
+                      <div className="bg-white rounded-lg shadow-lg border p-3 space-y-1">
+                        {conditionsMenu.map((item) => (
+                          <Link
+                            key={item.title}
+                            href={item.href}
+                            className="flex items-center gap-3 p-2 hover:bg-primary/5 rounded-md transition-colors"
+                          >
+                            <div className="p-2 bg-primary/10 rounded-md">
+                              <item.Icon className="h-4 w-4 text-primary" />
+                            </div>
+                            <div>
+                              <div className="font-medium text-sm">{item.title}</div>
+                              <div className="text-xs text-muted-foreground">{item.description}</div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Updated Desktop Book Button */}
+              <Button 
+                variant="default"
+                onClick={openContactModal}
+                className="shadow-sm hover:shadow-md transition-all hidden md:flex items-center gap-2"
+              >
+                <Calendar className="h-5 w-5" />
+                Book Evaluation
+              </Button>
             </div>
 
-            {/* Book Button */}
-            <Button 
-              variant="default"
-              size="sm"
-              onClick={openContactModal}
-              className="shadow-sm hover:shadow-md transition-all"
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 hover:bg-primary/5 rounded-lg transition-colors"
             >
-              Book Evaluation
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 hover:bg-primary/5 rounded-lg transition-colors"
-          >
-            {isMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </button>
-        </nav>
+              {isMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </button>
+          </nav>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -288,7 +298,7 @@ export function Header() {
                   ))}
                 </div>
 
-                {/* Mobile Contact Info */}
+                {/* Update Mobile Book Button */}
                 <div className="border-t mt-2 pt-3 space-y-2 pb-4">
                   <a 
                     href="tel:5197365353" 
@@ -306,14 +316,14 @@ export function Header() {
                     <span className="text-sm">286 Sandwich St S, Amherstburg</span>
                   </div>
                   <Button 
-                    className="w-full btn-hover flex items-center justify-center gap-2 mt-2" 
+                    className="w-full btn-hover flex items-center justify-center gap-2 mt-2 py-6"
                     onClick={() => {
                       setIsMenuOpen(false)
                       openContactModal()
                     }}
                   >
-                    <Calendar className="h-4 w-4" />
-                    <span className="text-sm">Book Evaluation</span>
+                    <Calendar className="h-5 w-5" />
+                    <span>Book Evaluation</span>
                   </Button>
                 </div>
               </div>

@@ -88,7 +88,7 @@ export default function Home() {
         variants={MOTION.page}
         className="relative overflow-hidden bg-muted/30"
       >
-        <div className="container py-16 md:py-32">
+        <div className="container py-8 md:py-16">
           <motion.div 
             variants={MOTION.stagger.container}
             className="grid gap-8 lg:gap-12 lg:grid-cols-2 items-center"
@@ -103,12 +103,12 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
-                  size="lg" 
-                  className="btn-hover"
+                  size="lg"
+                  className="btn-base btn-hover"
                   onClick={openContactModal}
                 >
                   Book Consultation
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button size="lg" variant="outline" className="btn-hover">
                   Learn More
@@ -169,7 +169,7 @@ export default function Home() {
       </motion.section>
 
       <section className="w-full bg-white">
-        <div className="container py-16 md:py-24">
+        <div className="container py-8 md:py-16">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Why Choose Orthotics NOW?
@@ -222,7 +222,7 @@ export default function Home() {
         viewport={{ once: true }}
         className="w-full bg-muted/30"
       >
-        <div className="container py-16 md:py-24">
+        <div className="container py-8 md:py-16">
           {/* Removing the redundant cards section */}
         </div>
       </motion.section>
@@ -280,7 +280,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="w-full bg-muted/30">
-        <div className="container py-16 md:py-24">
+        <div className="container py-8 md:py-16">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Visit Our Office
@@ -350,23 +350,25 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="container py-16 md:py-24">
-        <div 
-          className="bg-primary/5 rounded-2xl p-6 md:p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
-          onClick={openContactModal}
-        >
-          <div className="flex items-center gap-4">
-            <div className="p-4 bg-primary rounded-xl">
-              <Calendar className="h-8 w-8 text-white" />
+      <section className="w-full">
+        <div className="container">
+          <div 
+            className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
+            onClick={openContactModal}
+          >
+            <div className="flex items-center gap-4">
+              <div className="p-4 bg-primary rounded-xl">
+                <Calendar className="h-8 w-8 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">Get Your Custom Orthotics</h3>
+                <p className="text-muted-foreground">Schedule a consultation with Dr. Rob</p>
+              </div>
+              <ArrowRightCircle className="ml-auto h-7 w-7 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
-            <div>
-              <h3 className="text-xl font-semibold">Get Your Custom Orthotics</h3>
-              <p className="text-muted-foreground">Schedule a consultation with Dr. Rob</p>
-            </div>
-            <ArrowRightCircle className="ml-auto h-6 w-6 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }

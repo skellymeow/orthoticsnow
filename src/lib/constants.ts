@@ -1,9 +1,9 @@
 export const COLORS = {
   primary: {
-    DEFAULT: '#0047AB',
-    light: '#E6F0FF',
-    dark: '#003380',
-    muted: 'rgba(0, 71, 171, 0.1)',
+    DEFAULT: '#1a365d',
+    light: '#e2e8f0',
+    dark: '#0f172a',
+    muted: 'rgba(26, 54, 93, 0.1)',
   },
   secondary: {
     DEFAULT: '#2563eb',
@@ -56,7 +56,7 @@ export const MOTION = {
   },
   
   hover: {
-    scale: 1.02,
+    scale: 1.03,
     transition: { duration: 0.2, ease: 'easeInOut' }
   },
 
@@ -65,5 +65,19 @@ export const MOTION = {
     animate: { opacity: 1 },
     exit: { opacity: 0 },
     transition: { duration: 0.25, ease: 'easeInOut' }
+  }
+} as const
+
+export const TYPOGRAPHY = {
+  heading: {
+    h1: "text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight",
+    h2: "text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight",
+    h3: "text-2xl md:text-3xl font-bold",
+    h4: "text-xl md:text-2xl font-semibold",
+  },
+  body: {
+    large: "text-lg md:text-xl leading-relaxed",
+    base: "text-base leading-relaxed",
+    small: "text-sm leading-relaxed",
   }
 } as const 

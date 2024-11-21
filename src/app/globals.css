@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    /* modernized color system */
+    /* refined color system */
     --background: 210 40% 98%;
     --foreground: 215 25% 27%;
     
-    --primary: 215 100% 34%;
+    --primary: 217 71% 23%;
     --primary-foreground: 210 40% 98%;
     
     --secondary: 215 84% 53%;
@@ -44,6 +44,25 @@
     --background: 215 25% 12%;
     --foreground: 210 40% 98%;
     /* ... other dark mode variables ... */
+  }
+
+  /* enhanced typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  .container {
+    @apply px-4 md:px-6 mx-auto w-full;
+    max-width: var(--max-width);
+  }
+
+  /* update button base styles */
+  .btn-base {
+    @apply py-3 px-6 text-base; /* increased from default sizes */
+  }
+
+  .btn-hover {
+    @apply transition-all duration-200 ease-out hover:scale-[1.02] active:scale-[0.98] py-3; /* added py-3 */
   }
 }
 
@@ -137,10 +156,10 @@
 /* utility classes for consistent spacing */
 @layer utilities {
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-8 md:py-16;
   }
   
   .section-margin {
-    @apply my-16 md:my-24;
+    @apply my-8 md:my-16;
   }
 }
