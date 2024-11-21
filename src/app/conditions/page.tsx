@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { Bone, Activity, Footprints, Heart, Brain, ShieldAlert, ArrowRight, Calendar, ArrowRightCircle } from 'lucide-react'
 import Image from 'next/image'
 import { useModal } from '@/contexts/modal-context'
+import { CTAButton } from '@/components/cta-button'
 
 const conditions = [
   {
@@ -84,8 +85,6 @@ const conditions = [
 ] as const
 
 export default function ConditionsPage() {
-  const { openContactModal } = useModal()
-  
   return (
     <div className="flex-1">
       <section className="container py-12 md:py-24">
@@ -170,21 +169,7 @@ export default function ConditionsPage() {
             ))}
           </div>
 
-          <div 
-            className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
-            onClick={openContactModal}
-          >
-            <div className="flex items-center gap-4">
-              <div className="p-4 bg-primary rounded-xl">
-                <Calendar className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold">Get Your Custom Orthotics</h3>
-                <p className="text-muted-foreground">Schedule a consultation with Dr. Rob</p>
-              </div>
-              <ArrowRightCircle className="ml-auto h-6 w-6 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-          </div>
+          <CTAButton />
         </div>
       </section>
     </div>

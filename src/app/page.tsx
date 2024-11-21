@@ -9,6 +9,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { MOTION } from "@/lib/constants"
 import { useModal } from '@/contexts/modal-context'
+import { CTAButton } from '@/components/cta-button'
 
 const processSteps = [
   {
@@ -352,21 +353,7 @@ export default function Home() {
 
       <section className="w-full">
         <div className="container">
-          <div 
-            className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
-            onClick={openContactModal}
-          >
-            <div className="flex items-center gap-4">
-              <div className="p-4 bg-primary rounded-xl">
-                <Calendar className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold">Get Your Custom Orthotics</h3>
-                <p className="text-muted-foreground">Schedule a consultation with Dr. Rob</p>
-              </div>
-              <ArrowRightCircle className="ml-auto h-7 w-7 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-          </div>
+          <CTAButton />
         </div>
       </section>
     </>

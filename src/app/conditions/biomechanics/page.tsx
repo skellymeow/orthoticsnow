@@ -8,6 +8,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { useModal } from '@/contexts/modal-context'
+import { CTAButton } from '@/components/cta-button'
 
 export default function BiomechanicsPage() {
   const { openContactModal } = useModal()
@@ -113,21 +114,7 @@ export default function BiomechanicsPage() {
               </p>
             </div>
 
-            <div 
-              className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
-              onClick={openContactModal}
-            >
-              <div className="flex items-center gap-4">
-                <div className="p-4 bg-primary rounded-xl">
-                  <Calendar className="h-8 w-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold">Get Your Custom Orthotics</h3>
-                  <p className="text-muted-foreground">Schedule a consultation with Dr. Rob</p>
-                </div>
-                <ArrowRightCircle className="ml-auto h-6 w-6 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-            </div>
+            <CTAButton />
           </div>
         </div>
       </section>

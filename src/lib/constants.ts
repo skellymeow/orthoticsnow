@@ -80,4 +80,17 @@ export const TYPOGRAPHY = {
     base: "text-base leading-relaxed",
     small: "text-sm leading-relaxed",
   }
+} as const
+
+export const COMPONENTS = {
+  cta: {
+    container: "bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer",
+    content: "flex items-center gap-4",
+    iconWrapper: "p-4 bg-primary rounded-xl",
+    icon: "h-8 w-8 text-white",
+    textWrapper: "flex-1",
+    title: "text-xl font-semibold",
+    description: "text-muted-foreground",
+    arrow: "ml-auto h-6 w-6 text-primary opacity-0 group-hover:opacity-100 transition-opacity"
+  }
 } as const 

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { FileQuestion, Calendar, Settings, ArrowRight, Footprints, Clock, ArrowRightCircle } from 'lucide-react'
 import { useModal } from '@/contexts/modal-context'
+import { CTAButton } from '@/components/cta-button'
 
 const faqCategories = [
   {
@@ -94,8 +95,6 @@ const faqCategories = [
 ] as const
 
 export default function FAQPage() {
-  const { openContactModal } = useModal()
-  
   return (
     <div className="flex-1">
       <section className="container py-12 md:py-24">
@@ -145,28 +144,7 @@ export default function FAQPage() {
             ))}
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-center"
-          >
-            <div 
-              className="bg-primary/5 rounded-2xl p-8 hover:bg-primary/10 transition-colors group cursor-pointer"
-              onClick={openContactModal}
-            >
-              <div className="flex items-center gap-4">
-                <div className="p-4 bg-primary rounded-xl">
-                  <Calendar className="h-8 w-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold">Book Your Evaluation</h3>
-                  <p className="text-muted-foreground">Schedule a consultation with Dr. Rob</p>
-                </div>
-                <ArrowRightCircle className="ml-auto h-6 w-6 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-            </div>
-          </motion.div>
+          <CTAButton />
         </div>
       </section>
     </div>
